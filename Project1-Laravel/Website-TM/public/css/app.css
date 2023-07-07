@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar container */
+.nav {
+    background-color: #f2f2f2;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    padding-right: 20px;
+}
+/* Navbar logo */
+.nav-logo {
+    color: yellow;
+    font-weight: bold;
+    font-size: 20px;
+}
+/* Navbar links */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #555;
+}
+
+.sources {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sources-title {
+    padding: 10px;
+}
+.sources-links {
+    list-style-type: none;
+    padding: 10px;
+    align-items: center ;
+    justify-content: center;
+}
+.sources-links li {
+    padding: 10px;
+    margin-bottom: 10px; /* Add margin between the "a" elements */
+}
+

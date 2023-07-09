@@ -57,4 +57,10 @@
     padding: 10px;
     margin-bottom: 10px; /* Add margin between the "a" elements */
 }
+.body-news {
+    padding: 50px;
+}
+.body-faq {
+    padding: 50px;
+}
 

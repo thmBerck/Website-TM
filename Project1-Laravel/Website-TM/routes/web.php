@@ -1,28 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::name('news.')->prefix('news')->group(function() {
-    Route::get('/', function () {
-        return view('news.index');
-    })->name('index');
+    Route::get('/', [HomeController::class, 'news'])->name('index');
 });
 Route::name('faq.')->prefix('faq')->group(function() {
-    Route::get('/', function () {
-        return view('faq.index');
-    })->name('index');
+    Route::get('/', [HomeController::class, 'faq'])->name('index');
+});
+Route::name('news.')->prefix('news')->group(function() {
+    Route::get('/', [HomeController::class, 'news'])->name('index');
 });
 Route::name('contact.')->prefix('contact')->group(function() {
-    Route::get('/', function () {
-        return view('contact.index');
-    })->name('index');
+    Route::get('/', [HomeController::class, 'contact'])->name('index');
 });
 Route::name('aboutus.')->prefix('aboutus')->group(function() {
-    Route::get('/', function () {
-        return view('aboutus.index');
-    })->name('index');
+    Route::get('/', [HomeController::class, 'aboutus'])->name('index');
 });

@@ -15,7 +15,6 @@ class HomeController extends Controller
     }
     function news() {
         $news = NewsItem::all();
-
         return view('news.index',['news_items' => $news]);
     }
     function faq() {

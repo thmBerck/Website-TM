@@ -11,9 +11,9 @@
         <p>{{ $news_item->content}}</p>
         <p>{{$news_item->publishing_date}}</p>
         <div class="manage-news-item">
-            <form method="POST" action="{{route('news.edit', $news_item->id)}}">
+            <form method="GET" action="{{route('news.edit', $news_item->id)}}">
                 @csrf
-                @method('PUT')
+                @method('GET')
                 <button type="submit" value="edit">Edit</button>
             </form>
             <form method="POST" action="{{route('news.delete', $news_item->id)}}">

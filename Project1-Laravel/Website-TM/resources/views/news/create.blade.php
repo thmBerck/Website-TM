@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="form-create-post">
+<div class="form-create-news">
     <h1>Create a new News post</h1>
     <form method="POST" action="{{ route('news.store') }}">
     @csrf

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::name('faq.')->prefix('faq')->group(function() {
-    Route::get('/', [HomeController::class, 'faq'])->name('index');
+    Route::get('/', [FaqController::class, 'index'])->name('index');
 });
 Route::name('news.')->prefix('news')->group(function() {
     Route::get('/', [NewsController::class, 'index'])->name('index');
@@ -27,6 +28,7 @@ Route::name('news.')->prefix('news')->group(function() {
     Route::post('/store', [NewsController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [NewsController::class, 'edit'])->name('edit');
     Route::delete('/delete/{id}', [NewsController::class, 'destroy'])->name('delete');
+    Route::put('/update/{id}', [NewsController::class, 'update'])->name('update');
 });
 Route::name('contact.')->prefix('contact')->group(function() {
     Route::get('/', [HomeController::class, 'contact'])->name('index');

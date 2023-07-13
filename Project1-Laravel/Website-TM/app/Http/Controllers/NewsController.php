@@ -33,19 +33,6 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        // // $validatedNewsItem = $request->validate([
-        // //     'title' => 'required|max:64',
-        // //     'content' => 'required'
-        // // ]);
-        // // $newsitem = NewsItem::create($validatedNewsItem);
-        // $newsitem = new NewsItem;
-        // $newsitem->title = $request->title;
-        // $newsitem->content = $request->content;
-        // $newsitem->publishing_date = now();
-        // $newsitem->save();
-        // return redirect('/news');
-
-
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required|max:255',
@@ -58,7 +45,7 @@ class NewsController extends Controller
         $news->publishing_date = now();
         $news->save();
     
-        return redirect('/news')->with('success', 'News Item created!');
+        return redirect('/news')->with('success', 'News Item created!'); //TODO: I can maybe do something later with this "with"?
     }
 
     /**
@@ -74,7 +61,8 @@ class NewsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $news_item = NewsItem::find($id);
+        return view('news.edit', ['news_item' => $news_item]);
     }
 
     /**
@@ -82,7 +70,18 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required|max:255',
+        ]);
+    
+        $news_item = NewsItem::find($id);
+        $news_item->title = $validatedData['title'];
+        $news_item->content = $validatedData['content'];
+        $news_item->imageLink = $request->imageLink;
+        $news_item->save();
+
+        return redirect('/news')->with('success', 'News item was updated succesfully.');
     }
 
     /**

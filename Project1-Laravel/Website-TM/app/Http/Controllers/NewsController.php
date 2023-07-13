@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NewsItem;
 
 class NewsController extends Controller
 {
@@ -11,7 +12,12 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        // get all the sharks
+        $news = NewsItem::all();
+
+        // load the view and pass the sharks
+        return view('news.index')
+            ->with('news_items', $news);
     }
 
     /**
@@ -19,7 +25,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return View('news.create');
     }
 
     /**
@@ -27,7 +33,19 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required|max:255',
+        ]);
+    
+        $news = new NewsItem;
+        $news->title = $validatedData['title'];
+        $news->content = $validatedData['content'];
+        $news->imageLink = $request->imageLink;
+        $news->publishing_date = now();
+        $news->save();
+    
+        return redirect('/news')->with('success', 'News Item created!'); //TODO: I can maybe do something later with this "with"?
     }
 
     /**
@@ -43,7 +61,8 @@ class NewsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $news_item = NewsItem::find($id);
+        return view('news.edit', ['news_item' => $news_item]);
     }
 
     /**
@@ -51,7 +70,18 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required|max:255',
+        ]);
+    
+        $news_item = NewsItem::find($id);
+        $news_item->title = $validatedData['title'];
+        $news_item->content = $validatedData['content'];
+        $news_item->imageLink = $request->imageLink;
+        $news_item->save();
+
+        return redirect('/news')->with('success', 'News item was updated succesfully.');
     }
 
     /**
@@ -59,6 +89,8 @@ class NewsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $news = NewsItem::find($id);
+        $news->delete();
+        return redirect('/news')->with('success', 'News Item deleted with success!');
     }
 }

@@ -16,6 +16,8 @@
             <li><a href="{{route('faq.index')}}">FAQ</a></li>
             <li><a href="{{route('aboutus.index')}}">About Us</a></li>
             <li><a href="{{route('contact.index')}}">Contact</a></li>
+            <li><a href="{{route('register')}}">Register</a></li>
+            <li><a href="{{route('login')}}">Login</a></li>
         </ul>
     </nav>
     <div>

@@ -19,6 +19,14 @@
                 <p>I utilized this AI-powered chatbot to assist me in designing the website, particularly when it came to CSS-related queries and tasks.<br> The chatbot provided helpful guidance and suggestions for achieving the desired design and layout.</p>
                 <a href="https://chat.openai.com">https://chat.openai.com</a>
             </li>
+            <li>
+                <b>Laravel documentation by Laravel</b>
+                <p>I've used Laravel documentation to find basic code, such as the available column types in the migrations.</p>
+                <a href="https://laravel.com/docs/">https://laravel.com/docs/</a>
+            </li>
+            https://stackoverflow.com/questions/38709886/call-route-from-button-click-laravel
+            https://www.w3schools.com/tags/tag_textarea.asp
+            https://www.digitalocean.com/community/tutorials/simple-laravel-crud-with-resource-controllers
         </ul>
 </div>
 @endsection

@@ -33,10 +33,16 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'title.required' => 'The title must be filled in.',
+            'title.max' => 'The title should only contain 100 characters.',
+            'imageLink.url' => 'The imageLink must be a valid URL.',
+        ];
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|max:100',
             'content' => 'required|max:255',
-        ]);
+            'imageLink' => 'url',
+        ], $messages);
     
         $news = new NewsItem;
         $news->title = $validatedData['title'];
@@ -45,7 +51,7 @@ class NewsController extends Controller
         $news->publishing_date = now();
         $news->save();
     
-        return redirect('/news')->with('success', 'News Item created!'); //TODO: I can maybe do something later with this "with"?
+        return redirect('/news')->with('success', 'News Item created!');
     }
 
     /**

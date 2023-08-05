@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="form-edit-news">
-    <h1>Create a new News post</h1>
+    <h1>Edit a News post</h1>
     <form method="POST" action="{{ route('news.update', $news_item->id) }}">
     @csrf
     @method('PUT')

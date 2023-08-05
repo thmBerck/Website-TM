@@ -18,12 +18,25 @@
          $category will be “Legal” and $faqsByCategory will be a collection of all the FAQs that have “Legal” as their category. In the second iteration, 
          $category will be “Financial” and $faqsByCategory will be a collection of all the FAQs that have “Financial” as their category, and so on.--}}
     <h1>Frequently Asked Questions</h1>
+    <a href="{{route('faq.create')}}">Create a new frequently asked question.</a>
     @foreach($faqs->groupBy('category') as $category => $faqsByCategory)
         <h2>{{ $category }}</h2>
         @foreach($faqsByCategory as $faq)
             <div class="faq">
                 <h3>{{ $faq->question }}</h3>
                 <p>{{ $faq->answer }}</p>
+                <div class="manage-faq-item">
+                    <form method="GET" action="{{route('faq.edit', $faq->id)}}">
+                        @csrf
+                        @method('GET')
+                        <button type="submit" value="edit">Edit</button>
+                    </form>
+                    <form method="POST" action="{{route('faq.delete', $faq->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" value="delete">Delete</button>
+                    </form>
+                </div>
             </div>
         @endforeach
     @endforeach

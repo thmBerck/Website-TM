@@ -21,6 +21,11 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::name('faq.')->prefix('faq')->group(function() {
     Route::get('/', [FaqController::class, 'index'])->name('index');
+    Route::get('/create', [FaqController::class, 'create'])->name('create');
+    Route::post('/store', [FaqController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [FaqController::class, 'edit'])->name('edit');
+    Route::delete('/delete/{id}', [FaqController::class, 'destroy'])->name('delete');
+    Route::put('/update/{id}', [FaqController::class, 'update'])->name('update');
 });
 Route::name('news.')->prefix('news')->group(function() {
     Route::get('/', [NewsController::class, 'index'])->name('index');

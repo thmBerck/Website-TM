@@ -29,6 +29,7 @@
             https://www.digitalocean.com/community/tutorials/simple-laravel-crud-with-resource-controllers
             https://www.w3schools.com/css/css_dropdowns.asp
             https://www.w3schools.com/tags/att_select_multiple.asp
+            https://www.honeybadger.io/blog/user-roles-permissions-in-laravel/
             
 
         </ul>

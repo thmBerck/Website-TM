@@ -9,7 +9,12 @@
 </head>
 <body>
     <nav class="nav">
-        <div class="nav-logo"><img src="/images/TM logo.png" alt="TMentertainment logo" width="145"></div> <!-- Here comes the logo if I ever need one. -->
+        
+        <div class="nav-logo">
+            <a href="{{route('home')}}">
+                <img src="/images/TM logo.png" alt="TMentertainment logo" width="145">
+            </a>   
+        </div> 
         <ulv class="nav-links">
             <li><a href="{{route('home')}}">Home</a></li>
             <li><a href="{{route('news.index')}}">Latest News</a></li>
@@ -24,6 +29,9 @@
                         <form method="GET" action="{{route('profile.edit')}}">
                             <button type="submit">Profile</button>
                         </form>
+                    </li>
+    
+                    <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit">Logout</button>

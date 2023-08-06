@@ -27,6 +27,10 @@
             https://stackoverflow.com/questions/38709886/call-route-from-button-click-laravel
             https://www.w3schools.com/tags/tag_textarea.asp
             https://www.digitalocean.com/community/tutorials/simple-laravel-crud-with-resource-controllers
+            https://www.w3schools.com/css/css_dropdowns.asp
+            https://www.w3schools.com/tags/att_select_multiple.asp
+            
+
         </ul>
 </div>
 @endsection

@@ -16,8 +16,26 @@
             <li><a href="{{route('faq.index')}}">FAQ</a></li>
             <li><a href="{{route('aboutus.index')}}">About Us</a></li>
             <li><a href="{{route('contact.index')}}">Contact</a></li>
+            @auth
+            <div class="dropdown-auth">
+                <span>{{ Auth::user()->name }}</span>
+                <div class="dropdown-auth-content">
+                    <li>
+                        <form method="GET" action="{{route('profile.edit')}}">
+                            <button type="submit">Profile</button>
+                        </form>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                </div>
+            </div>
+            @endauth
+            @guest
             <li><a href="{{route('register')}}">Register</a></li>
             <li><a href="{{route('login')}}">Login</a></li>
+            @endguest
         </ul>
     </nav>
     <div>

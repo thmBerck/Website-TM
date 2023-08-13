@@ -30,7 +30,14 @@
                             <button type="submit">Profile</button>
                         </form>
                     </li>
-    
+                    @hasanyrole('admin|owner')
+                    <p>AM I admin?</p>
+                    <li>
+                        <form method="GET" action="{{route('admin.index')}}">
+                            <button type="submit">Admin Panel</button>
+                        </form>
+                    </li>
+                    @endrole
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

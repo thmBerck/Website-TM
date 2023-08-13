@@ -30,6 +30,10 @@
             https://www.w3schools.com/css/css_dropdowns.asp
             https://www.w3schools.com/tags/att_select_multiple.asp
             https://www.honeybadger.io/blog/user-roles-permissions-in-laravel/
+            https://codeanddeploy.com/blog/laravel/laravel-8-user-roles-and-permissions-step-by-step-tutorial#PYl6F4poc6E3wnhNDaSmqNYXZ
+            https://spatie.be/docs/laravel-permission/v5/basic-usage/new-app
+            https://stackoverflow.com/questions/65551836/laravel-breeze-and-spatie-permissions-set-role-while-user-registered
+            
             
 
         </ul>

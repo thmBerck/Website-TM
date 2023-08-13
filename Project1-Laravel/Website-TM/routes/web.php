@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckifAdmin;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------

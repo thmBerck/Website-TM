@@ -5,60 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="{{ asset('css/app.css') }}">-->
 </head>
 <body>
-    <nav class="nav">
-        
-        <div class="nav-logo">
-            <a href="{{route('home')}}">
-                <img src="/images/TM logo.png" alt="TMentertainment logo" width="145">
-            </a>   
-        </div> 
-        <ulv class="nav-links">
-            <li><a href="{{route('home')}}">Home</a></li>
-            <li><a href="{{route('news.index')}}">Latest News</a></li>
-            <li><a href="{{route('faq.index')}}">FAQ</a></li>
-            <li><a href="{{route('aboutus.index')}}">About Us</a></li>
-            <li><a href="{{route('contact.index')}}">Contact</a></li>
-            @auth
-            <div class="dropdown-auth">
-                <span>{{ Auth::user()->name }}</span>
-                <div class="dropdown-auth-content">
-                    <li>
-                        <form method="GET" action="{{route('profile.edit')}}">
-                            <button type="submit">Profile</button>
-                        </form>
+    <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{route('home')}}">
+                <img src="/images/TM logo.png" alt="Logo" width="118,2" height="118,2">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('news.index')}}">Latest News</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('faq.index')}}">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('aboutus.index')}}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('contact.index')}}">Contact</a></li>
+                    @auth
+                    <li class="nav-item dropdown">
+                            <a class="username"></a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->username }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a>
+                                </li>
+                                <li>
+                                    <form class="dropdown-item" method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="btn">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
                     </li>
-                    @hasanyrole('admin|owner')
-                    <p>AM I admin?</p>
-                    <li>
-                        <form method="GET" action="{{route('admin.index')}}">
-                            <button type="submit">Admin Panel</button>
-                        </form>
-                    </li>
-                    @endrole
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit">Logout</button>
-                        </form>
-                    </li>
-                </div>
+                    @endauth
+                    @guest
+                    <li><a href="{{route('register')}}">Register</a></li>
+                    <li><a href="{{route('login')}}">Login</a></li>
+                    @endguest
+                </ul>
             </div>
-            @endauth
-            @guest
-            <li><a href="{{route('register')}}">Register</a></li>
-            <li><a href="{{route('login')}}">Login</a></li>
-            @endguest
-        </ul>
+        </div>
     </nav>
-    <div>
-        @yield('content')
+    @hasanyrole('admin|owner')
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item bg-secondary text-white p-2 mb-2 d-flex w-100">Admin Panel</li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.roles') }}">Roles & Permissions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-10 ms-sm-auto px-md-4">
+                @yield('content')
+            </main>
+        </div>
     </div>
+    @endrole
    
 
     
-    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

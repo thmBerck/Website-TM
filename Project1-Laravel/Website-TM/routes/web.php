@@ -7,6 +7,7 @@ use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckifAdmin;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,12 @@ Route::name('contact.')->prefix('contact')->group(function() {
 Route::name('aboutus.')->prefix('aboutus')->group(function() {
     Route::get('/', [HomeController::class, 'aboutus'])->name('index');
 });
+Route::name('contact.')->prefix('contact')->group(function() {
+    Route::get('/', [ContactController::class, 'index'])->name('index');
+    Route::get('/show/{id}', [ContactController::class, 'show'])->name('show');
+    Route::post('/store', [ContactController::class, 'store'])->name('store');
+    Route::post('/reply/{id}', [ContactController::class, 'reply'])->name('reply');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -52,6 +59,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/content', [AdminController::class, 'content'])->name('admin.content');
+    Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
+    Route::get('/admin/roles', [AdminController::class, 'roles'])->name('admin.roles');
+    Route::post('/contact/archive/{id}', [ContactController::class, 'archive'])->name('contact.archive');
+    Route::post('/contact/delete/{id}', [ContactController::class, 'delete'])->name('contact.delete');
+});
+
 
 require __DIR__.'/auth.php';

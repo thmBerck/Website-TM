@@ -12,10 +12,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        // get all the sharks
+        // get all the news items
         $news = NewsItem::all();
 
-        // load the view and pass the sharks
+        // load the view and pass the news items
         return view('news.index')
             ->with('news_items', $news);
     }
@@ -36,12 +36,11 @@ class NewsController extends Controller
         $messages = [
             'title.required' => 'The title must be filled in.',
             'title.max' => 'The title should only contain 100 characters.',
-            'imageLink.url' => 'The imageLink must be a valid URL.',
         ];
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'content' => 'required|max:255',
-            'imageLink' => 'url',
+            'imageLink' => 'nullable|url',
         ], $messages);
     
         $news = new NewsItem;
@@ -78,7 +77,7 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'content' => 'required|max:255',
+            'content' => 'required',
         ]);
     
         $news_item = NewsItem::find($id);

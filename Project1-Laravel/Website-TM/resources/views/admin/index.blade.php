@@ -1,6 +1,3 @@
 @extends('layout')
-
-
-
-
-<h1>Ik ben admin!</h1>
+@section('content')
+@endsection

@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="body-news p-3 bg-light mb-1">
+    @hasanyrole('admin|owner')
     <a href="{{ route('news.create') }}" class="btn btn-success btn-sm mb-3">Create a new news article</a>
+    @endrole
     <h1>News</h1>
 
     @foreach($news_items as $news_item)

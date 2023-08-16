@@ -12,11 +12,13 @@
         <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
         
         <label for="category">Category</label><br>
-        <select name="category" id="category">
-            <option value="Legal">Legal</option>
-            <option value="Communication">Communication</option>
-            <option value="Finance">Finance</option>
-        </select><br><br>
+        <select name="category" class="form-control">
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
         
         <input type="submit" value="Create" class="btn btn-success">
     </form>

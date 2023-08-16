@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Faq;
+use App\Models\Category;
 
 class FaqController extends Controller
 {
@@ -12,12 +13,15 @@ class FaqController extends Controller
      */
     public function index()
     {
-          // get all the sharks
-          $faqs = Faq::all();
-
-          // load the view and pass the sharks
-          return view('faq.index')
-              ->with('faqs', $faqs);
+        // get all the faqs
+        $faqs = Faq::all();
+        
+        //get all the categories to group the faqs
+        $categories = Category::all();
+        // load the view and pass the faqs
+        return view('faq.index')
+            ->with('faqs', $faqs)
+            ->with('categories', $categories);
     }
 
     /**
@@ -25,7 +29,9 @@ class FaqController extends Controller
      */
     public function create()
     {
-        return View('faq.create');
+        $categories = Category::all();
+        return View('faq.create')
+                ->with('categories', $categories);
     }
 
     /**
@@ -36,23 +42,23 @@ class FaqController extends Controller
         $messages = [
             'question.required' => 'The question field must be filled in.',
             'answer.required' => 'The answer field must be filled in.',
-            'category.in' => 'This is not a possible category. Possible categories are Communication, Finance & Legal',
         ];
         $validatedData = $request->validate([
             'question' => 'required',
             'answer' => 'required',
-            'category' => 'in:Communication,Finance,Legal'
+            'category' => 'required',
         ]);
     
         $faq = new Faq;
         $faq->question = $validatedData['question'];
         $faq->answer = $validatedData['answer'];
-        $faq->category = $validatedData['category'];
+        $faq->category_id = $request->input('category');
         $faq->publishing_date = now();
         $faq->save();
     
         return redirect('/faq')->with('success', 'Frequently asked question created!');
     }
+    
 
     /**
      * Display the specified resource.

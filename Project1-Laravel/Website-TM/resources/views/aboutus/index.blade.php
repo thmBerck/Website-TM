@@ -29,7 +29,12 @@
             <p>I've used Laravel documentation to find basic code, such as the available column types in the migrations.</p>
             <a href="https://laravel.com/docs/">https://laravel.com/docs/</a>
         </li>
-        https://stackoverflow.com/questions/38709886/call-route-from-button-click-laravel
+        <li class="mb-4">
+            <b>Laravel Documentation by Laravel</b>
+            <p>I've used this source to refresh memory on how to call a route from a button element.</p>
+            <a href="https://stackoverflow.com/questions/38709886/call-route-from-button-click-laravel">https://stackoverflow.com/questions/38709886/call-route-from-button-click-laravel</a>
+        </li>
+        
             https://www.w3schools.com/tags/tag_textarea.asp
             https://www.digitalocean.com/community/tutorials/simple-laravel-crud-with-resource-controllers
             https://www.w3schools.com/css/css_dropdowns.asp
@@ -39,6 +44,9 @@
             https://spatie.be/docs/laravel-permission/v5/basic-usage/new-app
             https://stackoverflow.com/questions/65551836/laravel-breeze-and-spatie-permissions-set-role-while-user-registered
             https://cerwyn.medium.com/laravel-one-to-many-relationship-6474d29cfd87
+            https://www.stackhawk.com/blog/laravel-xss/
+            https://github.com/protonemedia/laravel-xss-protection
+            https://madewithlaravel.com/laravel-xss-protection
     </ul>
 </div>
 @endsection

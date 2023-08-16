@@ -29,7 +29,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a>
+                                    <form class="dropdown-item" method="GET" action="{{route('profile.edit')}}">
+                                        @csrf
+                                        <button type="submit" class="btn">Profile</button>
+                                    </form>
                                 </li>
                                 <li>
                                     <form class="dropdown-item" method="POST" action="{{ route('logout') }}">
@@ -61,6 +64,7 @@
                             <li class="nav-item bg-secondary text-white p-2 mb-2 d-flex w-100">Admin Panel</li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('admin.roles') }}">Roles & Permissions</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('admin.contact') }}">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('category.index') }}">FAQ Categories</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -67,6 +67,8 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/roles', [AdminController::class, 'roles'])->name('admin.roles');
     Route::post('/contact/archive/{id}', [ContactController::class, 'archive'])->name('contact.archive');
     Route::post('/contact/delete/{id}', [ContactController::class, 'delete'])->name('contact.delete');
+    Route::put('/admin/roles/changerole', [AdminController::class, 'changerole'])->name('admin.change-role');
+    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete');
 });
 
 

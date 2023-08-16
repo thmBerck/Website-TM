@@ -8,7 +8,7 @@
     <div class="replies mt-4">
         @foreach ($contact_request->replies as $reply)
             <div class="reply bg-secondary text-white p-3 mb-3">
-                <address>{{ $reply->user->username }}</address>
+                <address>{{ $reply->user->name }}</address>
                 <p>{{ $reply->message }}</p>
                 <p>{{ $reply->publishing_date }}</p>
             </div>

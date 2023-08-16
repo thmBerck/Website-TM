@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="body-news p-3 bg-light mb-4">
+<div class="body-news p-3 bg-light mb-1">
     <a href="{{ route('news.create') }}" class="btn btn-success btn-sm mb-3">Create a new news article</a>
     <h1>News</h1>
 

@@ -19,4 +19,24 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            @if ($user->role == 'admin')
+                            <form action="{{ route('admin.change-role', $user) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                
+                                <select name="role" class="form-control">
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                                
+                                <button type="submit" class="btn btn-primary">Change Role</button>
+                            </form>
+                            <a href="{{ route('admin.delete', $user->id) }}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
+                        

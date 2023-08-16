@@ -25,7 +25,7 @@
                     <li class="nav-item dropdown">
                             <a class="username"></a>
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->username }}
+                                {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -39,35 +39,39 @@
                                 </li>
                             </ul>
                     </li>
-                    @endauth
+                    @endauth 
                     @guest
-                    <li><a href="{{route('register')}}">Register</a></li>
-                    <li><a href="{{route('login')}}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('register')}}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{route('login')}}">Login</a></li>
                     @endguest
                 </ul>
             </div>
         </div>
     </nav>
-    @hasanyrole('admin|owner')
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-md-block bg-light sidebar">
-                <div class="position-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item bg-secondary text-white p-2 mb-2 d-flex w-100">Admin Panel</li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.roles') }}">Roles & Permissions</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.contact') }}">Contact</a></li>
-                    </ul>
+            @hasanyrole('admin|owner')
+            <div class="position-sticky" style="margin-left: 10px">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><img src="/images/admin-toggle.png" alt="Nav toggle" width="33" height="24,46666666666666667"></span> <!-- Original 495x367 -->
+                </button>
+                <div class="collapse show" id="sidebarCollapse">
+                    <nav class="col-md-2 d-md-block bg-light sidebar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item bg-secondary text-white p-2 mb-2 d-flex w-100">Admin Panel</li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.roles') }}">Roles & Permissions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.contact') }}">Contact</a></li>
+                        </ul>
+                    </nav>
                 </div>
-            </nav>
-            <main class="col-md-10 ms-sm-auto px-md-4">
+            </div>
+            @endrole
+            <main class="ms-sm-auto px-md-4" style="margin-top: 20px;"> <!-- Adjust the margin-top value as needed -->
                 @yield('content')
             </main>
         </div>
     </div>
-    @endrole
-   
-
+    
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

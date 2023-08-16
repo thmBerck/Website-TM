@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\NewsItem;
 use App\Models\ContactRequest;
 use App\Models\Faq;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -40,7 +42,28 @@ class AdminController extends Controller
     }
     public function roles()
     {
-        return view('admin.roles');
+        $users = User::all();
+        $roles = Role::all();
+        return view('admin.roles',compact('users', 'roles'));
+    }
+    public function changeRole(Request $request, User $user)
+    {
+        // Validate the request data
+        $request->validate([
+            'role' => ['required', 'exists:roles,name'],
+        ]);
+
+        // Get the new role from the request
+        $newRole = $request->input('role');
+
+        // Revoke all current roles from the user
+        $user->roles()->detach();
+
+        // Assign the new role to the user
+        $user->assignRole($newRole);
+
+        // Redirect back with a success message
+        return back()->with('success', 'The user\'s role has been changed successfully.');
     }
 
     /**
@@ -68,7 +91,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the user.
      */
     public function edit(string $id)
     {
@@ -86,8 +109,15 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, $userId): RedirectResponse
     {
-        //
+        // Find the user by their ID
+        $user = User::find($userId);
+
+        // Delete the user
+        $user->delete();
+
+        // Redirect to a page of your choice
+        return Redirect::to('/');
     }
 }

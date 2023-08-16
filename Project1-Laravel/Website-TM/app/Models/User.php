@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Models\Role;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -51,6 +53,9 @@ class User extends Authenticatable
     public function contactrequests(): HasMany {
         return $this->hasMany(ContactRequest::class);
     }
-
+    public function role(): HasOne
+    {
+        return $this->hasOne(Role::class);
+    }
 
 }

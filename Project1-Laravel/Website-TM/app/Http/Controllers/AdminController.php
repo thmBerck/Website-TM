@@ -46,14 +46,17 @@ class AdminController extends Controller
         $roles = Role::all();
         return view('admin.roles',compact('users', 'roles'));
     }
-    public function changeRole(Request $request, User $user)
+    public function changeRole(Request $request, $id)
     {
         // Validate the request data
         $request->validate([
             'role' => ['required', 'exists:roles,name'],
         ]);
 
-        // Get the new role from the request
+        //Find the User by id.
+        $user = User::find($id);
+
+        // Get the new role from the request.
         $newRole = $request->input('role');
 
         // Revoke all current roles from the user
@@ -62,18 +65,17 @@ class AdminController extends Controller
         // Assign the new role to the user
         $user->assignRole($newRole);
 
+        //Save the changes.
+        $user->save();
+
         // Redirect back with a success message
         return back()->with('success', 'The user\'s role has been changed successfully.');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function adduser()
     {
-        //
+        return view('admin.createuser');
     }
-
     /**
      * Store a newly created resource in storage.
      */

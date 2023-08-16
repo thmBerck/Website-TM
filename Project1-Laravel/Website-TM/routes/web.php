@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckifAdmin;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,9 +66,11 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/content', [AdminController::class, 'content'])->name('admin.content');
     Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
     Route::get('/admin/roles', [AdminController::class, 'roles'])->name('admin.roles');
+    Route::get('/admin/roles/adduser', [AdminController::class, 'adduser'])->name('admin.adduser');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::post('/contact/archive/{id}', [ContactController::class, 'archive'])->name('contact.archive');
     Route::post('/contact/delete/{id}', [ContactController::class, 'delete'])->name('contact.delete');
-    Route::put('/admin/roles/changerole', [AdminController::class, 'changerole'])->name('admin.change-role');
+    Route::put('/admin/roles/changerole/{id}', [AdminController::class, 'changerole'])->name('admin.change-role');
     Route::delete('/admin/users/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete');
 });
 

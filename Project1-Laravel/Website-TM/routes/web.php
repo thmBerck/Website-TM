@@ -88,9 +88,9 @@ Route::middleware(['log','admin'])->group(function () {
     Route::get('/admin/roles/adduser', [AdminController::class, 'adduser'])->name('admin.adduser');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::post('/contact/archive/{id}', [ContactController::class, 'archive'])->name('contact.archive');
-    Route::post('/contact/delete/{id}', [ContactController::class, 'delete'])->name('contact.delete');
+    Route::delete('/contact/delete/{id}', [ContactController::class, 'destroy'])->name('contact.delete');
     Route::put('/admin/roles/changerole/{id}', [AdminController::class, 'changerole'])->name('admin.change-role');
-    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete');
+    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
     Route::name('category.')->prefix('category')->group(function() {
         Route::post('/store', [CategoryController::class, 'store'])->name('store');
         Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');

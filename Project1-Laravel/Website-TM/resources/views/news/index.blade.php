@@ -6,7 +6,14 @@
     <a href="{{ route('news.create') }}" class="btn btn-success btn-sm mb-3">Create a new news article</a>
     @endrole
     <h1>News</h1>
-
+    <div class="container">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+    </div>
     @foreach($news_items as $news_item)
     <div class="news-item p-3 bg-white mt-3">
         <h2>{{ $news_item->title }}</h2>

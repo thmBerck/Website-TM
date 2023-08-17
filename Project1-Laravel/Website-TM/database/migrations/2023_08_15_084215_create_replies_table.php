@@ -20,13 +20,12 @@ return new class extends Migration
             $table->foreign('contact_request_id')
                     ->references('id')
                     ->on('contact_requests')
-                    ->onCascade('delete');
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
-                    ->onCascade('delete');
-
+                    ->onDelete('cascade');
         });
     }
 

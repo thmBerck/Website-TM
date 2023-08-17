@@ -15,21 +15,12 @@ class ContactController extends Controller
     public function index()
     {
         // Get the contact requests for the currently authenticated user.
-        $contact_requests = Auth::user()->contactrequests;
+        $contact_requests = Auth::user()->contactrequests()->where('archive', false)->get();
 
         // Load the view and pass the contact requests.
         return view('contact.index')
             ->with('contact_requests', $contact_requests);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -83,22 +74,6 @@ class ContactController extends Controller
         $reply->publishing_date = now();
         $reply->save();
         return redirect()->route('contact.show', ['id' => $id]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
     public function archive(string $id)
     { 

@@ -3,7 +3,14 @@
 @section('content')
 <div class="admin-contact">
     <h1>Contact Requests</h1>
-
+    <div class="container">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+    </div>
     @foreach($contact_requests as $contact_request)
     <div class="contact-request-admin p-3 bg-light mb-4">
         <h2>{{ $contact_request->subject }}</h2>

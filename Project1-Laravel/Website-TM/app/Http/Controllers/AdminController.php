@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function contact()
     {
         // Get all the contact requests.
-        $contact_requests = ContactRequest::all();
+        $contact_requests = ContactRequest::all()->where('archive', false);
 
         // Load the view and pass the contact requests.  
         return view('admin.contact')
@@ -75,37 +75,6 @@ class AdminController extends Controller
     public function adduser()
     {
         return view('admin.createuser');
-    }
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the user.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**

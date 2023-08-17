@@ -19,9 +19,10 @@
             @csrf
             @method('POST')
             <div class="input-group">
-                <input type="text" class="form-control" name="message" id="message" placeholder="Enter your reply">
+                <input type="text" class="form-control message-input" name="message" placeholder="Enter your reply" required>
                 <button type="submit" class="btn btn-primary">Reply</button>
             </div>
+            <p class="text-danger message-validation" style="display: none;">Message must contain non-digit characters.</p>
         </form>
     </div>
 </div>

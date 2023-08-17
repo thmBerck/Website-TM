@@ -18,6 +18,14 @@
          $category will be “Legal” and $faqsByCategory will be a collection of all the FAQs that have “Legal” as their category. In the second iteration, 
          $category will be “Financial” and $faqsByCategory will be a collection of all the FAQs that have “Financial” as their category, and so on.--}}
     <h1 class="mb-4">Frequently Asked Questions</h1>
+    <div class="container">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+    </div>
     @hasanyrole('admin|owner')
     <a href="{{ route('faq.create') }}" class="mb-3 btn btn-success">Add FAQ</a>
     @endrole

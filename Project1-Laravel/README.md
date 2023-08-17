@@ -1,16 +1,9 @@
-This is the folder for the Laravel project.
+This is the folder for the Laravel project. It should be ran in DevContainer, which is an extension in Visual studio code. This will bring the optimal experience. The Dev container runs together with Laravel Sail, which I hope is also counted as an extra requirement. :-)
 
 
-Temporary sources bank:
+Extra sources on top of readme.
 https://app.pluralsight.com/library/courses/laravel-9-fundamentals/table-of-contents (To refresh my memory on the Laravel topic. I also learned some core principles and best-practices here that I have used in my project.)
-https://canvas.ehb.be/courses/30473/modules (To refresh my memory on the Laravel topic.)
-https://chat.openai.com (For CSS)
 
-CSRF toevoegen met @csrf.
-Input validation
-  $request -> validate(
-    'title'=> ['required', 'min:10']
-  )
 
 
 

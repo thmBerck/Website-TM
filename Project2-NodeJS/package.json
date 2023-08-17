@@ -4,13 +4,19 @@
   "description": "This is the folder for the NodeJS project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node index.js",
+    "dev": "nodemon server.js"
   },
   "author": "Thomas Berckmoes",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
-    "mongoose": "^7.4.3"
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.3",
+    "nodemon": "^3.0.1",
+    "validatorjs": "^3.22.1"
   }
 }

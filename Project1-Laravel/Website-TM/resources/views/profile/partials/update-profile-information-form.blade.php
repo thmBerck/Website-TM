@@ -51,7 +51,13 @@
             <input id="avatar" name="avatar" type="file" class="mt-1 block w-full" />
             <progress id="upload-progress" max="100" value="0" style="display: none;"></progress>
             <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
-        </div>    
+        </div> 
+        <div>
+            <x-input-label for="about_me" :value="__('About Me')" />
+            <textarea id="about_me" name="about_me" class="mt-1 block w-full" rows="4">{{ old('about_me', $user->about_me) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('about_me')" />
+        </div>
+        
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

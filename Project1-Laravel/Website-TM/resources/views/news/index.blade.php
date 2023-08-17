@@ -19,6 +19,9 @@
         <h2>{{ $news_item->title }}</h2>
         <p>{{ $news_item->content }}</p>
         <p>{{ $news_item->publishing_date }}</p>
+        @if ($news_item->imageLink)
+            <img src="{{ $news_item->imageLink }}" alt="{{ $news_item->title }} Image" class="img-fluid">
+        @endif
         @hasanyrole('admin|owner')
         <div class="manage-news-item d-flex">
             <form method="GET" action="{{ route('news.edit', $news_item->id) }}" class="me-2">

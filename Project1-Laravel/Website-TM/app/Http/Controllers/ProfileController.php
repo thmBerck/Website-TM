@@ -38,6 +38,8 @@ class ProfileController extends Controller
             $avatarPath = $request->file('avatar')->store('avatars', 'public'); // Store the uploaded image
             $user->avatar = $avatarPath;
         }
+
+        $user->about_me = $request->input('about_me');
     
         $user->fill($data);
         $user->save();
